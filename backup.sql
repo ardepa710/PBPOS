@@ -217,6 +217,35 @@ LOCK TABLES `pbcatvld` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbdventas`
+--
+
+DROP TABLE IF EXISTS `tbdventas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbdventas` (
+  `corp_code` varchar(4) NOT NULL,
+  `fctry_code` varchar(4) NOT NULL,
+  `sale_id` int(11) NOT NULL,
+  `line_id` int(11) NOT NULL AUTO_INCREMENT,
+  `parts_code` varchar(100) DEFAULT NULL,
+  `qty` decimal(9,2) DEFAULT NULL,
+  `price` decimal(9,2) DEFAULT NULL,
+  `price_type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`line_id`,`corp_code`,`fctry_code`,`sale_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbdventas`
+--
+
+LOCK TABLES `tbdventas` WRITE;
+/*!40000 ALTER TABLE `tbdventas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbdventas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbmcorp`
 --
 
@@ -273,8 +302,69 @@ CREATE TABLE `tbmproductos` (
 
 LOCK TABLES `tbmproductos` WRITE;
 /*!40000 ALTER TABLE `tbmproductos` DISABLE KEYS */;
-INSERT INTO `tbmproductos` VALUES (' ',' ',' ',' ',' ',' ',' ',' ','2023-11-23 19:08:55','2023-11-23 19:08:55',' ',' ',0.00,0.00,0.00),('MX','41','123','BOTELLA AGUA 600ML','BOTELLA DE AGUA CIEL','CIEL COCACOLA','123','REFRIGERADOR','2023-11-16 00:00:00','2023-11-16 00:00:00','ADMIN','ADMIN',5.00,9.00,10.00),('MX','41','233','1','1','1','1','1','2023-11-23 19:10:38','2023-11-23 19:10:38','1','1',6.00,3.00,1.00),('MX','41','321','BOTELLA AGUA 1LT','BOTELLA DE AGUA CIEL','CIEL COCACOLA','321','REFRIGERADOR','2023-11-16 00:00:00','2023-11-16 00:00:00','ADMIN','ADMIN',8.00,12.00,7.00),('MX','41','4','1','1','1','1','1','2023-11-23 19:12:50','2023-11-23 19:12:50','1','1',6.00,3.00,1.00);
+INSERT INTO `tbmproductos` VALUES (' ',' ',' ',' ',' ',' ',' ',' ','2023-11-23 19:08:55','2023-11-23 19:08:55',' ',' ',0.00,0.00,0.00),('MX','41','1','aar','aaron','armando','1','piso','2023-11-24 13:06:35','2023-11-24 13:06:35','','',10.00,20.00,3.00),('MX','41','123','BOTELLA AGUA 600ML','BOTELLA DE AGUA CIEL','CIEL COCACOLA','123','REFRIGERADOR','2023-11-16 00:00:00','2023-11-16 00:00:00','ADMIN','ADMIN',5.00,9.00,10.00),('MX','41','2','2','2','2','2','2','2023-11-27 14:17:59','2023-11-27 14:17:59','','',2.00,22.00,2.00),('MX','41','233','1','1','1','1','1','2023-11-23 19:10:38','2023-11-23 19:10:38','1','1',6.00,3.00,1.00),('MX','41','3','3','3','3',NULL,'3','2023-11-27 14:19:07','2023-11-27 14:19:07','','',3.00,3.00,3.00),('MX','41','321','BOTELLA AGUA 1LT','BOTELLA DE AGUA CIEL','CIEL COCACOLA','321','REFRIGERADOR','2023-11-16 00:00:00','2023-11-16 00:00:00','ADMIN','ADMIN',8.00,12.00,7.00),('MX','41','4','1','1','1','1','1','2023-11-23 19:12:50','2023-11-23 19:12:50','1','1',6.00,3.00,1.00),('MX','41','5','5','5','5','5','5','2023-11-27 14:20:43','2023-11-27 14:20:43','','',NULL,5.00,5.00);
 /*!40000 ALTER TABLE `tbmproductos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbmusd`
+--
+
+DROP TABLE IF EXISTS `tbmusd`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbmusd` (
+  `corp_code` varchar(4) NOT NULL,
+  `fctry_code` varchar(4) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rate` decimal(5,2) DEFAULT NULL,
+  `reg_dttm` datetime DEFAULT NULL,
+  `reg_user` varchar(100) DEFAULT NULL,
+  `rate_dt` date DEFAULT NULL,
+  PRIMARY KEY (`id`,`corp_code`,`fctry_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbmusd`
+--
+
+LOCK TABLES `tbmusd` WRITE;
+/*!40000 ALTER TABLE `tbmusd` DISABLE KEYS */;
+INSERT INTO `tbmusd` VALUES ('MX','41',1,17.00,'2023-11-27 17:22:04','ADMIN','2023-11-27');
+/*!40000 ALTER TABLE `tbmusd` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbmventas`
+--
+
+DROP TABLE IF EXISTS `tbmventas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbmventas` (
+  `corp_code` varchar(4) NOT NULL,
+  `fctry_code` varchar(4) NOT NULL,
+  `sale_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sale_total_mxn` decimal(9,2) DEFAULT NULL,
+  `sale_iva_mxn` decimal(9,2) DEFAULT NULL,
+  `sale_total_usd` decimal(9,2) DEFAULT NULL,
+  `sale_iva_usd` decimal(9,2) DEFAULT NULL,
+  `reg_dttm` datetime DEFAULT current_timestamp(),
+  `reg_user` varchar(100) DEFAULT NULL,
+  `sale_type` varchar(100) DEFAULT NULL,
+  `client_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`sale_id`,`corp_code`,`fctry_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbmventas`
+--
+
+LOCK TABLES `tbmventas` WRITE;
+/*!40000 ALTER TABLE `tbmventas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbmventas` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -331,4 +421,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-23 21:23:28
+-- Dump completed on 2023-11-27 18:12:48
